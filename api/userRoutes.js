@@ -18,7 +18,8 @@ const upload = multer({ storage: storage });
 
 routes.post("/signup", upload.single("img"), async (req, res) => {
   let { username, email, password } = req.body;
-  let imageName = req.file.filename;
+  // let imageName = req.file.filename;
+  let imageName ="gopal.jpg"
   const newuser = new User({ username, email, img: imageName });
   try {
     await User.register(newuser, password);

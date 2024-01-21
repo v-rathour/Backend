@@ -16,7 +16,8 @@ const multer = require("multer");
 
 // const upload = multer({ storage: storage });
 
-routes.post("/signup", upload.single("img"), async (req, res) => {
+// routes.post("/signup", upload.single("img"), async (req, res) => {
+routes.post("/signup",  async (req, res) => {
   let { username, email, password } = req.body;
   // let imageName = req.file.filename;
   // let imageName ="gopal.jpg"

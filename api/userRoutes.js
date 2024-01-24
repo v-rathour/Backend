@@ -20,9 +20,9 @@ const { isLogined } = require("../middleware");
   
 routes.post("/signup", async (req, res) => {
   let { username, email, password } = req.body;
-  let imageName = req.file.filename;
+  // let imageName = req.file.filename;
   // let imageName ="gopal.jpg"
-  const newuser = new User({ username, email ,img:imageName});
+  const newuser = new User({ username, email});
   try {
     await User.register(newuser, password);
     res.status(200).json({ message: "User create successfully" });

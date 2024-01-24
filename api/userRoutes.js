@@ -5,23 +5,24 @@ const passport = require("passport");
 const { isLogined } = require("../middleware");
 const multer = require("multer");
 
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, "https://delightful-chaja-08b3da.netlify.app/public/uploads/");
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, Date.now() + "-" + file.originalname);
-//   },
-// });
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "https://delightful-chaja-08b3da.netlify.app/public/uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
 
-// const upload = multer({ storage: storage });
+const upload = multer({ storage: storage });
 
 // routes.post("/signup", upload.single("img"), async (req, res) => {
-routes.post("/signup",  async (req, res) => {
+  
+routes.post("/signup", upload.single("img"), async (req, res) => {
   let { username, email, password } = req.body;
-  // let imageName = req.file.filename;
+  let imageName = req.file.filename;
   // let imageName ="gopal.jpg"
-  const newuser = new User({ username, email});
+  const newuser = new User({ username, email ,img:imageName});
   try {
     await User.register(newuser, password);
     res.status(200).json({ message: "User create successfully" });

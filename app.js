@@ -42,7 +42,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://delightful-chaja-08b3da.netlify.app"],
+    origin: ["https://cheerful-creponne-2e79cb.netlify.app"],
     credentials: true,
     methods: "GET,POST,PUT,DELETE",
   })
